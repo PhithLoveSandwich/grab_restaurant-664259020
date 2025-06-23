@@ -19,8 +19,8 @@ const Card = (props) => {
             {props.type}
           </p>
           <div className="card-actions justify-end">
-            <div className="badge badge-outline">Delete</div>
-            <div className="badge badge-outline">Edit</div>
+        <a className="btn btn-outline btn-primary">Delete</a>
+        <a className="btn btn-outline btn-secondary">Edit</a>
           </div>
         </div>
       </div>
