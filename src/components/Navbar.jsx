@@ -1,5 +1,4 @@
 import React from "react";
-
 const NavBar = () => {
   const menuItems = [
     {
@@ -8,7 +7,7 @@ const NavBar = () => {
     },
     {
       name: "Add restaurant",
-      url: "/",
+      url: '../pages/Form.jsx',
     },
     {
       name: "About Us",

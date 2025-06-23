@@ -1,7 +1,21 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Navbar from "../components/Navbar";
 import Restauant from "../components/Restauant";
 const Home = () => {
+const [restaurants, setRestaurants] = useState([]);
+  useEffect(() => {
+    //call api: getAllRestaurants
+    fetch("http://localhost:3000/restaurants").then((res)=>{
+      //convert to json
+      return res.json()
+    }).then((Response)=>{
+      //save to state
+      setRestaurants(Response)
+    }).catch((err)=> {
+      //catch error
+      console.log(err.message);
+    }); 
+  },[])
   return (
     <div className="container mx-auto">
       <Navbar />
@@ -32,7 +46,7 @@ const Home = () => {
         </label>
       </div>
       <div>
-        <Restauant />
+        <Restauant restaurants = {restaurants}/>
       </div>
     </div>
   );
