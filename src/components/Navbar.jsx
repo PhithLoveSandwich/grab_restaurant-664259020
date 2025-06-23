@@ -8,11 +8,11 @@ const NavBar = () => {
     },
     {
       name: "Add restaurant",
-      url: "/add",
+      url: "/",
     },
     {
       name: "About Us",
-      url: "/about",
+      url: "/",
     },
   ];
   return (
