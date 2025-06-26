@@ -1,11 +1,29 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
+import { useParams } from 'react-router';
 import Navbar from "../components/Navbar";
-const Form = () => {
+const Update = () => {
+    //1.Get Id from Url
+    const { id } = useParams();
     const [restaurant, setRestaurant] = useState({
         title : '',
         type : '',
         img : '',
     });
+    //2. Get Restaurant by ID
+  useEffect(() => {
+    fetch("http://localhost:3000/restaurants/" + id)
+    .then((res)=>{
+      //convert to json
+      return res.json()
+    })
+    .then((response)=>{
+      //save to state
+      setRestaurant(response)
+    }).catch((err)=> {
+      //catch error
+      console.log(err.message);
+    }); 
+  },[id])
     const handleChange = (e) =>{
         const { name, value } = e.target;
         setRestaurant({...restaurant , [name]: value});
@@ -13,11 +31,11 @@ const Form = () => {
     const handleSubmit = async () => {
         try {
             const response = await fetch("http://localhost:3000/restaurants",{
-                method: "POST",
+                method: "PUT",
                 body: JSON.stringify(restaurant)
             });
             if (response.ok){
-                alert("Restaurant added sucessfully")
+                alert("Restaurant Update sucessfully")
                 setRestaurant({
                     title : '',
                     type : '',
@@ -33,7 +51,7 @@ const Form = () => {
         <Navbar />
         <div>
         <h1 className="title justify-center text-3xl text-center m-5 p-5">
-          Grab Restaurant Add Form
+          Grab Restaurant Update Form
         </h1>
         </div>
         <div className='flex flex-center justify-center'>
@@ -67,11 +85,11 @@ const Form = () => {
       )}
         </div>
       <div className="flex flex-center justify-center gap-4 mt-6">
-        <a className="btn btn-outline btn-primary" onClick={handleSubmit}>Add</a>
+        <a className="btn btn-outline btn-primary" onClick={handleSubmit}>Update</a>
         <a className="btn btn-outline btn-secondary">Cancel</a>
       </div>
     </div>
   )
 }
 
-export default Form
+export default Update

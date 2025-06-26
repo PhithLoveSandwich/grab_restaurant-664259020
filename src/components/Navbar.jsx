@@ -7,7 +7,7 @@ const NavBar = () => {
     },
     {
       name: "Add restaurant",
-      url: '../pages/Form.jsx',
+      url: '/add',
     },
     {
       name: "About Us",

@@ -20,7 +20,7 @@ const Card = (props) => {
           </p>
           <div className="card-actions justify-end">
         <a className="btn btn-outline btn-secondary">Delete</a>
-        <a className="btn btn-outline btn-primary">Edit</a>
+        <a className="btn btn-outline btn-primary" href="/update/:id">Edit</a>
           </div>
         </div>
       </div>
