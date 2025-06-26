@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 import Home from "../pages/Home";
 import Update from "../pages/update";
 import Form from "../pages/Form";
+import Delete from "../pages/Delete";
 
 const router = createBrowserRouter([
     {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
         {
         path: "/update/:id",
         element: <Update />,
+    },
+            {
+        path: "/delete/:id",
+        element: <Delete />,
     },
 ]);
 export default router;

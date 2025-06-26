@@ -19,8 +19,8 @@ const Card = (props) => {
             {props.type}
           </p>
           <div className="card-actions justify-end">
-        <a className="btn btn-outline btn-secondary">Delete</a>
-        <a className="btn btn-outline btn-primary" href="/update/:id">Edit</a>
+        <a href={"/delete/"+ props.id} className="btn btn-outline btn-secondary">Delete</a>
+        <a href={"/update/"+ props.id} className="btn btn-outline btn-primary">Edit</a>
           </div>
         </div>
       </div>

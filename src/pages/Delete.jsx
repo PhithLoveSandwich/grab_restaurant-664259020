@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router';
 import Navbar from "../components/Navbar";
-const Update = () => {
+
+const Delete = () => {
     //1.Get Id from Url
     const { id } = useParams();
     const [restaurant, setRestaurant] = useState({
@@ -31,11 +32,11 @@ const Update = () => {
     const handleSubmit = async () => {
         try {
             const response = await fetch("http://localhost:3000/restaurants/" + id,{
-                method: "PUT",
+                method: "DELETE",
                 body: JSON.stringify(restaurant)
             });
             if (response.ok){
-                alert("Restaurant Update sucessfully")
+                alert("Restaurant Delete sucessfully")
                 setRestaurant({
                     title : '',
                     type : '',
@@ -51,28 +52,28 @@ const Update = () => {
         <Navbar />
         <div>
         <h1 className="title justify-center text-3xl text-center m-5 p-5">
-          Grab Restaurant Update Form
+          Grab Restaurant Delete Form
         </h1>
         </div>
         <div className='flex flex-center justify-center'>
             <fieldset class="fieldset">
             <legend class="fieldset-legend">Restaurant Ttile:</legend>
             <input type="text" class="input flex items-center gap-2 w-2xl" 
-            placeholder="Ttile..." onChange={handleChange} value={restaurant.title} name = "title"/>
+            placeholder="Ttile..." onChange={handleChange} value={restaurant.title} name = "title" disabled />
             </fieldset>
         </div>
         <div className='flex flex-center justify-center'>
             <fieldset class="fieldset">
             <legend class="fieldset-legend">Restaurant Type:</legend>
             <input type="text" class="input flex items-center gap-2 w-2xl" 
-            placeholder="Type..." onChange={handleChange} value={restaurant.type} name = "type"/>
+            placeholder="Type..." onChange={handleChange} value={restaurant.type} name = "type" disabled />
             </fieldset>
         </div>
         <div className='flex flex-center justify-center'>
             <fieldset class="fieldset">
             <legend class="fieldset-legend">Restaurant Img:</legend>
             <input type="text" class="input flex items-center gap-2 w-2xl" 
-            placeholder="Url..." onChange={handleChange} value={restaurant.img} name = "img"/>
+            placeholder="Url..." onChange={handleChange} value={restaurant.img} name = "img" disabled />
             </fieldset>
         </div>
         <div className='flex flex-center justify-center'>
@@ -88,11 +89,11 @@ const Update = () => {
       )}
         </div>
       <div className="flex flex-center justify-center gap-4 mt-6">
-        <a className="btn btn-outline btn-primary" onClick={handleSubmit}>Update</a>
+        <a className="btn btn-outline btn-primary" onClick={handleSubmit}>Delete</a>
         <a className="btn btn-outline btn-secondary">Cancel</a>
       </div>
     </div>
   )
 }
 
-export default Update
+export default Delete
