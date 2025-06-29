@@ -58,7 +58,8 @@
   "users": [
     {
       "username": "user1",
-      "password": "password01"
+      "password": "password01",
+      "id": "3734"
     }
   ]
 }
